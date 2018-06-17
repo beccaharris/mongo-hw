@@ -32,10 +32,9 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/mongo-hw
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI);
 
-// Routes //
-app.get('/', function(req, res) {
-  res.render('index')
-})
+// Import routes //
+var routes = require("./controllers/controller.js");
+app.use("/", routes);
 
 app.listen(PORT, function() {
   console.log(`App running on port: ${PORT}`)
