@@ -6,10 +6,14 @@ var ArticleSchema = new Schema({
   title: {
     type: String,
     required: true,
+    unique: true
   },
   link: {
     type: String,
     required: true
+  },
+  summary: {
+    type: String,
   },
   note: {
     type: Schema.Types.ObjectId,
