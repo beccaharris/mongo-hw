@@ -8,9 +8,6 @@ var express    = require('express'),
 var request = require('request'),
     cheerio = require('cheerio'); 
 
-// Models folder //
-var db = require('./models');
-
 // Set port & initialize express //
 var PORT = process.env.PORT || 3000;
 var app = express();

@@ -6,7 +6,6 @@ var ArticleSchema = new Schema({
   title: {
     type: String,
     required: true,
-    unique: true
   },
   link: {
     type: String,
@@ -14,11 +13,12 @@ var ArticleSchema = new Schema({
   },
   summary: {
     type: String,
+    required: true
   },
-  note: {
+  notes: [{
     type: Schema.Types.ObjectId,
     ref: "Note"
-  }
+  }]
 });
 
 var Article = mongoose.model('Article', ArticleSchema);

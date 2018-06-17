@@ -1,43 +1,52 @@
 // Dependencies //
-var express  = require('express'),
-    mongoose = require('mongoose'),
-    router   = express.Router();
+var express    = require('express'),
+    router     = express.Router();
 
 // Scraping tools //
-var request  = require('request'),
-    cheerio  = require('cheerio');
+var request = require('request'),
+    cheerio = require('cheerio'); 
 
-// Models folder //
-var db = require('../models');
+// Models //
+var db = require('../models')
 
-// Set mongoose to leverage built in JavaScript ES6 Promises
-mongoose.Promise = Promise;
-
-// Index (home) //
+// Routes //
+// index //
 router.get('/', function(req, res) {
-  res.render('index');
+  res.redirect('/scrape');
 });
 
-// Scrape NYT //
+// scrape //
 router.get('/scrape', function(req, res) {
-  request('http://www.nytimes.com', function(err, res, html) {
+  request('http://www.nytimes.com/', function(error, response, html) {
     var $ = cheerio.load(html);
+    var scrapedArticles = {};
     $('article').each(function(i, element) {
-      var result = {} 
-      result.title = $(this).children('.story-heading').text();
+      var result = {};
+      result.title = $(this).children('h2').text();
+      result.link = $(this).children('h2').children('a').attr('href');
       result.summary = $(this).children('.summary').text();
-      result.link = $(this).children('.story-heading').children('a').attr('href');
-
-      // Create new article object & save to db //
-      var entry = new db.Article(result);
+      // Give summary a value if there isn't on provided //
+      if (result.summary !== "") {
+        result.summary = result.summary
+      } else {
+        result.summary = "Oh no! No summary was provided for this article."
+      }
+      scrapedArticles[i] = result;
+      // save entry to mongodb //
+      var entry = new db.Article (result);
       entry.save(function(err, doc) {
         if (err) {
-          console.log(err)
+          console.log(err);
         } else {
-          console.log(doc)
+          console.log(doc);
         }
       });
     });
+    // pass articles to handlebars so they show in the view //
+    var hbsArticleObject = {
+      articles: scrapedArticles
+    };
+    res.render('index', hbsArticleObject);
   });
 });
 
