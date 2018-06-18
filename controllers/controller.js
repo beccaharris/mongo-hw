@@ -50,5 +50,15 @@ router.get('/scrape', function(req, res) {
   });
 });
 
+// get saved article //
+router.get("/saved", function(req, res) {
+  db.Article.find({"saved": true}).populate("notes").exec(function(error, articles) {
+    var hbsObject = {
+      article: articles
+    };
+    res.render("saved", hbsObject);
+  });
+});
+
 // Export routes for server.js
 module.exports = router;

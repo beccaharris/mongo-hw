@@ -1,7 +1,33 @@
 .top-nav {
   margin-bottom: 20px;
 }
+.scrape-button {
+  margin-left: 10px;
+}
 .card {
-  height: 270px;
+  margin-bottom: 20px;
+}
+.card-header {
+  padding-bottom: 0;
+  padding-top: 10px;
+}
+h4 {
+  margin-bottom: 0;
+}
+.save-button {
+  float: right;
+  margin-bottom: 5px;
+}
+.add-note {
+  float: left
+}
+.view-art {
+  margin-bottom: 20px;
+  float: right;
+}
+.delete-art {
+  margin-left: 10px;
+}
+.list-group {
   margin-bottom: 20px;
 }
