@@ -1,3 +1,8 @@
+body, html {
+  font-family: 'PT Sans', sans-serif;
+  background-image: url('/assets/images/paper_3.png');
+  color: white;
+}
 .top-nav {
   margin-bottom: 20px;
 }
@@ -6,13 +11,21 @@
 }
 .card {
   margin-bottom: 20px;
+  border: 1px solid #1b0429
+}
+.card-body {
+  color: black;
 }
 .card-header {
   padding-bottom: 0;
   padding-top: 10px;
+  background-color: #1b0429
 }
 h4 {
   margin-bottom: 0;
+}
+.jumbotron {
+  background-color: #1b0429
 }
 .save-button {
   float: right;
@@ -30,4 +43,18 @@ h4 {
 }
 .list-group {
   margin-bottom: 20px;
+}
+.sticky-bottom {
+  color: black;
+  height: 90px;
+}
+.heroku {
+  height: 32px;
+}
+.fa-github {
+  color: black;
+  float: right;
+}
+.code {
+  float: right;
 }
