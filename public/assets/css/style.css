@@ -58,3 +58,6 @@ h4 {
 .code {
   float: right;
 }
+.modal-title, .modal-text, .existing-notes {
+  color: black;
+}
