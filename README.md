@@ -1,5 +1,5 @@
 # New York Times Scraper w/MongoDB
-This app uses webscraping to grab article headings, summaries, and urls directly from the New York Times and pull them into the view within the app. It allows users to save articles and write (and access later) notes that are linked to the specific article. View the app in action here: <a href="https://enigmatic-lake-48969.herokuapp.com/">Heroku</a>
+This app uses webscraping to grab article headings, summaries, and urls directly from the New York Times and pull them into the view within the app. It allows users to save articles and write (and access later) notes that are linked to the specific article. View the app in action here: <a href="https://bharris-mongo-scraper.herokuapp.com/">Heroku</a>
 
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development.
